@@ -1,9 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import Card from "../../atoms/card/Card";
 import UserIconWithName from "../../molecules/user/UserIconWithName";
 
-const UserCord = (props) => {
+const UserCord = memo((props) => {
+  console.log("ユーザーカード");
   const { user, isAdmin } = props;
   return (
     <Card>
@@ -24,7 +25,7 @@ const UserCord = (props) => {
       </SDl>
     </Card>
   );
-};
+});
 
 const SDl = styled.dl`
   text-align: left;
