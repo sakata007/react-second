@@ -1,33 +1,28 @@
-import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
-
-import "./App.css";
-import Home from "./Home";
-import Page1 from "./Page1";
-import Page2 from "./Page2";
+import axios from "axios";
 
 function App() {
+  const onClickUsers = () => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const onClickUser1 = () => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/users/?id=1")
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Link to="/">Home</Link>
-        <br />
-        <Link to="/page1">Page1</Link>
-        <br />
-        <Link to="/page2">Page2</Link>
-      </div>
-
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/page1">
-          <Page1 />
-        </Route>
-        <Route path="/page2">
-          <Page2 />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <div className="App">
+      <button onClick={onClickUsers}>users</button>
+      <button onClick={onClickUser1}>id=1のuser</button>
+    </div>
   );
 }
 
